@@ -20,7 +20,7 @@ app.post('/api/hashCode', function(request, response) {
   if (message === undefined || typeof max == 'number' && max <= 0) {
     response.sendStatus(400);
   }
-  response.send({
+  response.json({
     hash: utils.hashCode(message, max)
   });
 });
