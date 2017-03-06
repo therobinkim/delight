@@ -9,9 +9,20 @@ const PORT = process.env.PORT || 9999;
 app.use(bodyParser.json());
 app.use(middleware.logger);
 
-app.get('/', function(request, response) {
-  response.send({
-    message: 'received'
+app.all('/', function(request, response) {
+  response.json({
+    body: request.body,
+    hostname: request.hostname,
+    ip: request.ip,
+    method: request.method,
+    path: request.path,
+    protocol: request.protocol,
+    query: request.query,
+    secure: request.secure,
+    subdomains: request.subdomains,
+    time: Date.now(),
+    url: request.originalUrl,
+    xhr: request.xhr
   });
 });
 
